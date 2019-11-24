@@ -1,0 +1,22 @@
+<div class="header">
+  <h1>Коты</h1>
+  <button type="button" class="btn btn--dark" (click)="showCatForm = !showCatForm">Создать кота</button>
+</div>
+<div class="cat-list">
+  <div class="cat-list__form" *ngIf="showCatForm">
+    <app-cat-from (catUpdated)="createCat($event)"></app-cat-from>
+  </div>
+  <div class="cat-list__search">
+    <input type="text" [(ngModel)]="searchName" placeholder="Поиск по имени кота..">
+  </div>
+  <div *ngIf="cats$ | async as cats; else emptyList">
+    <ng-container *ngFor="let cat of cats | catsFilter:searchName">
+      <app-cat-card [cat]="cat"></app-cat-card>
+    </ng-container>
+    <div *ngIf="(cats | catsFilter:searchName).length === 0" class="cat-list__message">Не найдено ни одного кота</div>
+  </div>
+</div>
+
+<ng-template #emptyList>
+  <div class="cat-list__message">Список котов пуст</div>
+</ng-template>

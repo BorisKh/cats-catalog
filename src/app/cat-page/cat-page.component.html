@@ -1,0 +1,4 @@
+<h2>Карточка кота</h2>
+<div *ngIf="cat$ | async as cat">
+  <app-cat-from [cat]="cat" [viewMode]="true"></app-cat-from>
+</div>

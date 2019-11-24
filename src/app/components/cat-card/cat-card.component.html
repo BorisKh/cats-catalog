@@ -1,0 +1,13 @@
+<div class="card">
+  <div class="card__header">
+    <h2>{{ cat.name }}</h2>
+    <span>{{ cat.like }}</span>
+  </div>
+  <div class="card__content">
+    <img [src]="cat.img" class="card__image" alt="">
+    <div>{{ cat.description }}</div>
+  </div>
+  <div class="card__bottom">
+    <button type="button" class="btn" [routerLink]="['/cat', cat._id]">Подробнее..</button>
+  </div>
+</div>
