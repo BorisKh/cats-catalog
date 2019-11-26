@@ -2,7 +2,10 @@
 
 form {
   padding: 10px;
-  border: 1px dashed $dark-color;
+
+  &.edit {
+    border: 1px dashed $dark-color;
+  }
 }
 
 .form-control {

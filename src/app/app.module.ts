@@ -10,6 +10,7 @@ import { CatPageComponent } from './cat-page/cat-page.component';
 import { CatCardComponent } from './components/cat-card/cat-card.component';
 import { CatFromComponent } from './components/cat-from/cat-from.component';
 import { CatsFilterPipe } from './pipes/cats-filter.pipe';
+import { AlertComponent } from './components/alert/alert.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { CatsFilterPipe } from './pipes/cats-filter.pipe';
     CatPageComponent,
     CatCardComponent,
     CatFromComponent,
-    CatsFilterPipe
+    CatsFilterPipe,
+    AlertComponent
   ],
   imports: [
     BrowserModule,

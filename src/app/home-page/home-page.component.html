@@ -1,9 +1,9 @@
 <div class="header">
   <h1>Коты</h1>
-  <button type="button" class="btn btn--dark" (click)="showCatForm = !showCatForm">Создать кота</button>
+  <button type="button" class="btn btn--dark" (click)="shownCatForm = !shownCatForm">Создать кота</button>
 </div>
 <div class="cat-list">
-  <div class="cat-list__form" *ngIf="showCatForm">
+  <div class="cat-list__form" *ngIf="shownCatForm">
     <app-cat-from (catUpdated)="createCat($event)"></app-cat-from>
   </div>
   <div class="cat-list__search">

@@ -1,4 +1,19 @@
-<h2>Карточка кота</h2>
-<div *ngIf="cat$ | async as cat">
-  <app-cat-from [cat]="cat" [viewMode]="true"></app-cat-from>
+<div class="card-details" *ngIf="cat$ | async as cat">
+  <div class="card-details__header">
+    <div>
+      <h2>Карточка кота</h2>
+      <div>
+        <small>Лайков - {{ cat.like }}</small>
+      </div>
+      <button type="button" class="btn" (click)="likeCate(cat._id)">лайк</button>
+    </div>
+    <div class="card-details__controls">
+      <button type="button" class="btn btn--dark" (click)="editMode = !editMode">Редактировать</button>
+      <button type="button" class="btn btn--dark" (click)="removeCat(cat._id)">Удалить</button>
+    </div>
+  </div>
+  <div class="card-details__content">
+    <app-cat-from [cat]="cat" [editMode]="editMode" (catUpdated)="updateCat($event)"></app-cat-from>
+  </div>
+  <a routerLink="/"><< к списку котов</a>
 </div>

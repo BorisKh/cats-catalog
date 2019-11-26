@@ -1,7 +1,8 @@
-<form [formGroup]="form" (ngSubmit)="onCatSave()">
+<form [formGroup]="form" (ngSubmit)="onCatSave()" [class.edit]="editMode">
   <div class="form-control" [ngClass]="{invalid: form.get('name').touched && form.get('name').invalid}">
     <label for="name">Имя кота:</label>
-    <input id="name" type="text" formControlName="name">
+    <input *ngIf="editMode" id="name" type="text" formControlName="name">
+    <div *ngIf="!editMode">{{ form.get('name').value }}</div>
     <div class="form-control__error" *ngIf="form.get('name').touched && form.get('name').invalid">
       Введите имя кота
     </div>
@@ -12,19 +13,20 @@
       <img *ngIf="form.get('img').value" [src]="form.get('img').value" alt="Фото кота">
       <span *ngIf="!form.get('img').value">Фото не загружено</span>
     </div>
-    <input id="img" type="file" (change)="onImageLoad($event)">
+    <input *ngIf="editMode" id="img" type="file" (change)="onImageLoad($event)">
     <div class="form-control__error" *ngIf="form.get('img').touched && form.get('img').invalid">
       Добавьте фото кота
     </div>
   </div>
   <div class="form-control" [ngClass]="{invalid: form.get('description').touched && form.get('description').invalid}">
     <label for="description">Описание кота:</label>
-    <textarea id="description" type="text" formControlName="description"></textarea>
+    <textarea *ngIf="editMode" id="description" type="text" formControlName="description"></textarea>
+    <div *ngIf="!editMode">{{ form.get('description').value }}</div>
     <div class="form-control__error" *ngIf="form.get('description').touched && form.get('description').invalid">
       Введите описание кота
     </div>
   </div>
-  <div class="form-buttons">
+  <div class="form-buttons" *ngIf="editMode">
     <button class="btn btn--dark" type="submit" [disabled]="form.invalid">Сохранить</button>
   </div>
 </form>

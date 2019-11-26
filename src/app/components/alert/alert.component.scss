@@ -1,0 +1,24 @@
+@import '../../../assets/styles/colors';
+
+.alert {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  max-width: 400px;
+
+  &--success {
+    background: $success-color;
+    color: #fff;
+    opacity: 0.8;
+  }
+
+  &--warning {
+    background: $danger-color;
+    color: #fff;
+    opacity: 0.8;
+  }
+
+  &__box {
+    padding: 10px;
+  }
+}

@@ -1,0 +1,19 @@
+.card-details {
+  padding: 20px;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__controls {
+    & > *:not(:last-child) {
+      margin-right: 8px;
+    }
+  }
+
+  &__content {
+    margin-top: 15px;
+  }
+}

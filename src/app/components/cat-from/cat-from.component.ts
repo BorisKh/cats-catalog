@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {Cat} from '../../services/cats.service';
+import {Cat, CatsService} from '../../services/cats.service';
 
 @Component({
   selector: 'app-cat-from',
@@ -9,12 +9,12 @@ import {Cat} from '../../services/cats.service';
 })
 export class CatFromComponent implements OnInit {
   @Input() cat: Cat;
-  @Input() viewMode = false;
+  @Input() editMode = true;
   @Output() catUpdated: EventEmitter<Cat> = new EventEmitter<Cat>();
 
   form: FormGroup;
 
-  constructor() { }
+  constructor(private catsService: CatsService) { }
 
   ngOnInit() {
     this.form = new FormGroup({
@@ -30,7 +30,7 @@ export class CatFromComponent implements OnInit {
     }
 
     this.catUpdated.emit({
-      _id: Math.floor(Math.random() * 10000000000).toString(), //TODO: добавить вычисление id
+      _id: this.cat ? this.cat._id : this.catsService.nextIdValue,
       name: this.form.get('name').value,
       img: this.form.get('img').value,
       description: this.form.get('description').value,
